@@ -1,12 +1,12 @@
 pipeline{
 agent any
 stages{
-stage(){
+stage('Clone Repository'){
 steps{
 git 'https://github.com/AdityaTripathi2507/apachewebsite.git'
 }
 }
-stage(){
+stage('Deploy to Apache Server'){
 steps{
 script{
 sh '''
@@ -18,7 +18,7 @@ sudo chmod -R 755 /var/www/html/
 }
 }
 }
-stage(){
+stage('Restart Apache'){
 steps{
 script{
 sh 'sudo systemctl restart apache2'
